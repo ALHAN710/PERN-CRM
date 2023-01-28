@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // "mysql"//
+  url      = env("DATABASE_URL")
+}
+
+enum ROLE {
+  USER
+  ADMIN
+  INVOICER
+  DEMO
+}
+
+model User {
+  id        String     @id @default(uuid())
+  uid       String     @unique @map("firebase_uid")
+  // createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime   @updatedAt @map("updated_at")
+  // email     String     @unique @db.VarChar(50)
+  // password  String
+  firstName String     @map("first_name") @db.VarChar(50)
+  lastName  String     @map("last_name") @db.VarChar(50)
+  roles     ROLE[]     @default([USER])
+  customers Customer[]
+}
+
+model Customer {
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  firstName String    @map("first_name") @db.VarChar(100)
+  lastName  String    @map("last_name") @db.VarChar(100)
+  email     String    @db.VarChar(50)
+  company   String?   @db.VarChar(100)
+  userId    String    @map("user_id")
+  user      User      @relation(fields: [userId], references: [id])
+  invoices  Invoice[]
+}
+
+enum INVOICE_STATUS {
+  SENT
+  PAID
+  CANCELLED
+}
+
+model Invoice {
+  id         String         @id @default(uuid())
+  amount     Float
+  sentAt     DateTime       @default(now()) @map("sent_at")
+  createdAt  DateTime       @default(now()) @map("created_at")
+  updatedAt  DateTime       @updatedAt @map("updated_at")
+  status     INVOICE_STATUS @default(SENT)
+  chrono     Int
+  customerId String         @map("customer_id")
+  customer   Customer       @relation(fields: [customerId], references: [id])
+}
