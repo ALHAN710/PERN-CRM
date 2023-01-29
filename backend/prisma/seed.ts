@@ -27,20 +27,23 @@ async function main() {
 
   // ============ Users loop ============
   const nbUser = 10; // number of Users
-
-  const Roles: Array<"USER" | "ADMIN" | "INVOICER"> = ["ADMIN", "INVOICER"]; // users roles
+  type TRoles = "USER" | "ADMIN" | "INVOICER" | "DEMO";
+  const Roles: Array<TRoles> = ["ADMIN", "INVOICER", "DEMO"]; // users roles
   for (let u = 0; u < nbUser; u++) {
     let chrono = 1;
     const userGender = faker.helpers.arrayElement<"female" | "male">(genders);
-    const userRoles: Array<"USER" | "ADMIN" | "INVOICER"> = [];
+    const userRoles: Array<TRoles> = [];
     userRoles.push(faker.helpers.arrayElement(Roles));
     userRoles.push("USER");
 
     // const hash = await bcrypt.hash("password", 10);
+    let firstName_ = "";
+    let lastName_ = "";
+    let email = "";
 
-    const firstName_ = faker.name.firstName(userGender);
-    const lastName_ = faker.name.lastName(userGender);
-    const email = faker.internet.email(firstName_, lastName_);
+    firstName_ = u > 0 ? faker.name.firstName(userGender) : "Test";
+    lastName_ = u > 0 ? faker.name.lastName(userGender) : "DEMO";
+    email = u > 0 ? faker.internet.email(firstName_, lastName_) : "demo@pern-crm.com";
 
     const userRecord = await firebaseSignUp(email, "password");
     if (userRecord) {
