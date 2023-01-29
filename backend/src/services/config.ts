@@ -9,4 +9,7 @@ export const projectId = process.env.FIREBASE_PROJECT_ID;
 export const storageBucket = process.env.FIREBASE_STORAGE_BUCKET;
 export const authDomain = process.env.FIREBASE_AUTH_DOMAIN;
 export const clientEmail = process.env.FIREBASE_CLIENT_EMAIL;
-export const privateKey = process.env.FIREBASE_PRIVATE_KEY;
+// export const privateKey = process.env.FIREBASE_PRIVATE_KEY;
+export const privateKey = process.env.FIREBASE_PRIVATE_KEY
+? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/gm, "\n")
+: undefined;
