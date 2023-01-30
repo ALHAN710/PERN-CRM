@@ -1,9 +1,9 @@
-import express, { Request } from "express";
+import express from "express";
+import Joi from "joi";
 import { addCustomer, deleteCustomer, getCustomer, getCustomers, updateCustomer } from "../controllers/customerController";
+import { customerSecurity, isGranted, userRoles } from "../middlewares/access-control";
 import { requireAuth } from "../middlewares/require-auth";
 import { body, params } from "../middlewares/validate-request";
-import Joi from "joi";
-import { customerSecurity, isGranted, userRoles } from "../middlewares/access-control";
 import { customerSchema, customerUpdateSchema } from "../services/validation-schema";
 
 const router = express.Router();
