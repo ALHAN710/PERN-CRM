@@ -10,17 +10,14 @@ const InvoiceFormLoader = (props: any) => {
 
     {/* Inline Group of Status and Customer Select Field */}
     <Stack
-      direction={"row"}
-      spacing={5}
-      justifyContent={"space-between"}
-      // alignItems={"flex-end"}
+      spacing={3}
       className="my-5"
     >
       {/* Status Select Field */}
-      <Skeleton variant="rounded" animation={animation} width={"50%"} height={height} />
+      <Skeleton variant="rounded" animation={animation} width={"100%"} height={height} />
 
       {/* Customer Select Field */}
-      <Skeleton variant="rounded" animation={animation} width={"50%"} height={height} />
+      <Skeleton variant="rounded" animation={animation} width={"100%"} height={height} />
     </Stack>
 
     {/* Inline Group Button */}
