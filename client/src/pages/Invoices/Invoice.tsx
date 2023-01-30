@@ -297,8 +297,9 @@ export const Invoice = () => {
       } catch (error: any) {
         // Form Fields errors management
         error.type = "create";
-        setFormErrors(error, setError);
+        setFormErrors(error.errors, setError);
         // console.log(error);
+        toast.error("An unexpected occurred when trying to add the customer.");
       }
     }
   };
