@@ -29,14 +29,14 @@ export const customerSchema = Joi.object({
     firstName: Joi.string().min(3).max(100).required(),
     lastName: Joi.string().min(3).max(100).required(),
     email: Joi.string().email().max(50).required(),
-    company: Joi.string().max(100).optional(),
+    company: Joi.string().max(100).allow(...["", null]).optional(),
 });
 
 export const customerUpdateSchema = Joi.object({
     firstName: Joi.string().min(3).max(100),
     lastName: Joi.string().min(3).max(100),
     email: Joi.string().email().max(50),
-    company: Joi.string().max(100).optional(),
+    company: Joi.string().max(100).allow(...["", null]).optional(),
 });
 
 export const invoiceSchema = Joi.object({
