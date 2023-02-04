@@ -37,8 +37,8 @@ export default function Customers() {
     refetchInterval: 120000,
     onSuccess: (data) => {
       console.log(data);
-      !isRefetching &&
-        toast.success("Successfully retrieving customers' list. 👌");
+      // !isRefetching &&
+      //   toast.success("Successfully retrieving customers' list. 👌");
     },
     onError: (error) => {
       !isRefetching &&

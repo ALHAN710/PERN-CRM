@@ -37,8 +37,8 @@ export default function Invoices() {
     refetchInterval: 120000,
     onSuccess: (data) => {
       console.log(data);
-      !isRefetching &&
-        toast.success("Successfully getting the invoices' list. 😀");
+      // !isRefetching &&
+      //   toast.success("Successfully getting the invoices' list. 😀");
     },
     onError: (error) => {
       //display an error get INVOICES toast message
