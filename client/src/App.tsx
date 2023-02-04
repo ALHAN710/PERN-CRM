@@ -22,6 +22,7 @@ import * as config from "./utils/config";
 // import theme from "./utils/theme";
 import getCustomTheme from "./utils/theme";
 import { Box } from "@mui/material";
+import { Footer } from "./components/Footer";
 
 const queryClient = new QueryClient();
 
@@ -86,6 +87,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Container>
+          <Footer />
         </Router>
         <ToastContainer
           position={toast.POSITION.BOTTOM_LEFT}
