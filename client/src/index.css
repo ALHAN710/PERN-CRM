@@ -16,7 +16,7 @@
   }
 
   footer {
-    @apply py-[18px] px-[20px] absolute bottom-0 right-0 left-0 text-[#6c757d] border-t border-x-0 border-b-0 border-solid border-[#6c757d] dark:border-[#dee2e6]
+    @apply py-[18px] px-[20px] block absolute right-0 left-0 text-[#6c757d] border-t border-x-0 border-b-0 border-solid border-[#c5c7c8] dark:border-[#474747]
   }
 }
 
