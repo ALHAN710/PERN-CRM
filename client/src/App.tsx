@@ -47,7 +47,7 @@ function App() {
         {/* <ContextProvider> */}
         <Router basename={import.meta.env.BASE_URL}>
           <ResponsiveAppBar />
-          <Container className="  mt-24 mx-auto">
+          <Container className="  my-24 mx-auto">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path={config.loginPath} element={<Login />} />
@@ -87,7 +87,7 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Container>
-          <Footer />
+          {/* <Footer /> */}
         </Router>
         <ToastContainer
           position={toast.POSITION.BOTTOM_LEFT}
